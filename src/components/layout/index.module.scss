@@ -1,0 +1,19 @@
+.mainLayout {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.siderContainer {
+  width: 160px;
+  overflow: hidden;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column
+}
+
+.headerContainer {
+  height: 56px;
+  background-color: aliceblue;
+}
