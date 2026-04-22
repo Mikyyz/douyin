@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { Outlet } from "react-router-dom";
 import { Layout } from "@douyinfe/semi-ui";
 import PageSider from "./PageSider";
 import PageHeader from "./PageHeader";
@@ -11,7 +12,9 @@ const MainLayout: FC = () => {
       <Sider className={style.siderContainer}><PageSider /></Sider>
       <Layout className={style.contentContainer}>
         <Header className={style.headerContainer}><PageHeader /></Header>
-        <Content>Content</Content>
+        <Content>
+          <Outlet /> {/* 子页面渲染在这里 */}
+        </Content>
       </Layout>
     </Layout>
   )

@@ -1,7 +1,11 @@
 import { FC } from 'react'
-import MainLayout from './components/layout/MainLayout'
-import './App.css'
+import { RouterProvider } from "react-router-dom";
+import { router } from './router';
 
-const App: FC = () => <MainLayout />
+const App: FC = () => {
+  return (
+    <RouterProvider router={router} />
+  )
+}
 
 export default App
