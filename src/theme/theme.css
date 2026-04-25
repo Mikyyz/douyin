@@ -1,0 +1,9 @@
+/* 🌞 浅色主题 */
+:root {
+  --semi-navigation-item-selected-bg: rgba(37, 38, 50, 0.1);
+}
+
+/* 🌙 深色主题 */
+[data-theme="dark"] {
+  --semi-navigation-item-selected-bg: rgba(242, 242, 255, 0.1);
+}
