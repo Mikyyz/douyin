@@ -9,4 +9,12 @@
 body {
   padding: 0;
   margin: 0;
+  background-color: var(--semi-color-bg-1);
+}
+
+.semi-navigation-item-selected {
+  background-color: var(--semi-color-fill-1);
+  .semi-navigation-item-icon:first-child { 
+    color: var(--semi-color-text-0) !important;
+  }
 }

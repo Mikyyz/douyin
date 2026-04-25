@@ -34,7 +34,7 @@ const HeaderMenu: FC = () => {
           <Text type="secondary">投稿</Text>
         </Space>
         <Popover content="登录" position="bottomRight">
-          <Button theme="solid" icon={<IconUserCircle />} size="big">登录</Button>
+          <Button theme="solid" icon={<IconUserCircle />} size="large">登录</Button>
         </Popover>
       </Space>
     </div>

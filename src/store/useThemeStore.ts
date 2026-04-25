@@ -1,34 +1,31 @@
 import { create } from 'zustand';
+import { ThemeMode, ThemeState } from '@/types';
+import { createJSONStorage, persist } from 'zustand/middleware';
 
-type ThemeMode = 'light' | 'dark';
+const LOCAL_STORAGE_THEME_KEY = 'theme-mode'
 
-interface ThemeState {
-  mode: ThemeMode;
-  toggleTheme: () => void;
-  setMode: (mode: ThemeMode) => void;
+function applyTheme(mode: ThemeMode) {
+  document.body.setAttribute('theme-mode', mode)
 }
 
-function applyTheme(mode: 'light' | 'dark') {
-  const body = document.body;
-
-  if (mode === 'dark') {
-    body.setAttribute('theme-mode', 'dark');
-  } else {
-    body.removeAttribute('theme-mode');
-  }
-}
-
-export const useThemeStore = create<ThemeState>((set, get) => ({
-  mode: 'light',
-
-  setMode: (mode) => {
-    applyTheme(mode);
-    set({ mode });
-  },
-
-  toggleTheme: () => {
-    const next = get().mode === 'light' ? 'dark' : 'light';
-    applyTheme(next);
-    set({ mode: next });
-  },
-}));
+export const useThemeStore = create<ThemeState>()(persist(
+  (set) => ({
+    mode: 'light',
+    setMode: (mode: ThemeMode) => {
+      applyTheme(mode)
+      set({ mode })
+    },
+    toggleThemeMode: (mode: ThemeMode) => {
+      applyTheme(mode)
+      set({ mode })
+    },
+}),
+  {
+    name: LOCAL_STORAGE_THEME_KEY,
+    storage: createJSONStorage(() => localStorage),
+    onRehydrateStorage: () => (state) => {
+      if (state?.mode) {
+        applyTheme(state.mode)
+      }
+    },
+  }))

@@ -1,0 +1,10 @@
+
+.themeSwitch {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.activeBgColor {
+  background-color: var(--semi-color-fill-0);
+}
