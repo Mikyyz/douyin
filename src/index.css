@@ -18,3 +18,11 @@ body {
     color: var(--semi-color-text-0) !important;
   }
 }
+
+.semi-list-split .semi-list-header {
+  border-bottom: none !important;
+}
+
+.semi-list-split .semi-list-footer {
+  padding: 12px 0 !important;
+}

@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@douyinfe/semi-icons": "^2.95.1",
+    "@douyinfe/semi-icons-lab": "^2.95.1",
     "@douyinfe/semi-ui": "^2.95.1",
     "@semi-bot/semi-theme-custom-dark": "^1.0.0",
     "@semi-bot/semi-theme-custom-light": "^1.0.1",

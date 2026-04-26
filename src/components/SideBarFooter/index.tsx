@@ -115,6 +115,7 @@ const SideBarFooter: FC = () => {
             icon={<IconSettingStroked />}
           />
         }
+        trigger="click"
       />
       <AppDropdown
         menu={infoMenuConfig}

@@ -14,6 +14,7 @@ import {
 } from "@douyinfe/semi-icons";
 import { useLocation, useNavigate } from "react-router-dom";
 import SideBarFooter from "@/components/SideBarFooter";
+import styles from "./index.module.scss";
 
 const { Header, Item, Footer } = Nav;
 
@@ -22,12 +23,7 @@ const PageSider: FC = () => {
   const navigate = useNavigate();
   return (
     <Nav
-      bodyStyle={{
-        width: 160,
-        height: "80vh",
-        textAlign: "center",
-        borderRight: 0,
-      }}
+      className={styles.pageNav}
       selectedKeys={[location.pathname]}
       defaultSelectedKeys={["/"]}
       onSelect={({ itemKey }: { itemKey: string }) => {
