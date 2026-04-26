@@ -1,0 +1,71 @@
+
+.userLoginMenu {
+  width: 300px;
+  padding: 4px 16px;
+}
+.userLoginMenuItemContainer {
+  cursor: pointer;
+  border: none !important;
+  height: 42px;
+  padding: 12px;
+  background-color: var(--semi-color-fill-0);
+  border-radius: var(--semi-border-radius-small);
+  margin-bottom: 10px;
+  &:hover {
+    background-color: var(--semi-color-fill-2);
+  }
+}
+
+.userLoginMenuItemContent {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.userLoginMenuItem {
+  display: flex;
+  gap: 8px;
+  align-items: bottom;
+}
+
+.userLoginMenuItemIcon {
+  color: var(--semi-color-text-3);
+  font-size: 13px;
+}
+
+.userLoginMenuHeader {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-left: -24px;
+}
+
+.userLoginMenuHeaderAvatar {
+  font-size: 54px;
+  color: var(--semi-color-text-3);
+}
+
+.userLoginMenuHeaderTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.userLoginMenuFooterContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.userLoginMenuFooter {
+  padding: 12px;
+  cursor: pointer;
+  &:hover {
+    background-color: var(--semi-color-fill-2);
+    border-radius: var(--semi-border-radius-small);
+  }
+}
+
+.userLoginMenuFooterIcon {
+  color: var(--semi-color-text-3)
+}
