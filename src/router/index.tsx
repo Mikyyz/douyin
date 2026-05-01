@@ -4,6 +4,8 @@ import FeedPage from "@/pages/FeedPage";
 import Recommend from "@/pages/Recommend";
 import AiSearch from "@/pages/AiSearch";
 import Follow from "@/pages/Follow";
+import { Friend } from "@/pages/Friend";
+import { My } from "@/pages/My";
 
 export const router = createBrowserRouter([
   {
@@ -29,11 +31,19 @@ export const router = createBrowserRouter([
       {
         path: "follow",
         element: <Follow />,
+      },
+      {
+        path: 'friend',
+        element: <Friend />
+      },
+      {
+        path: 'my',
+        element: <My />
       }
     ],
   },
   {
     path: "*",
-    element: <div>404</div>,
+    element: <Navigate to="/jingxuan" replace />,
   }
 ]);

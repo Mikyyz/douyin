@@ -1,22 +1,27 @@
 import { FC } from "react";
-import { Outlet } from "react-router-dom";
 import { Layout } from "@douyinfe/semi-ui";
+import { Outlet } from "react-router-dom";
 import PageSider from "./PageSider";
 import PageHeader from "./PageHeader";
+import { LoginModal } from "@/components/Login";
 import style from "./index.module.scss"
 
+const { Header, Content, Sider } = Layout
+
 const MainLayout: FC = () => {
-  const { Header, Content, Sider } = Layout
   return (
-    <Layout className={style.mainLayout}>
-      <Sider className={style.siderContainer}><PageSider /></Sider>
-      <Layout className={style.contentContainer}>
-        <Header className={style.headerContainer}><PageHeader /></Header>
-        <Content className={style.contentContainer}>
-          <Outlet /> {/* 子页面渲染在这里 */}
-        </Content>
+    <>
+      <Layout className={style.mainLayout}>
+        <Sider className={style.siderContainer}><PageSider /></Sider>
+        <Layout className={style.contentContainer}>
+          <Header className={style.headerContainer}><PageHeader /></Header>
+          <Content className={style.contentContainer}>
+            <Outlet /> {/* 子页面渲染在这里 */}
+          </Content>
+        </Layout>
       </Layout>
-    </Layout>
+      <LoginModal />
+    </>
   )
 }
 

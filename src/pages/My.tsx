@@ -1,6 +1,5 @@
 import { FC } from "react";
 
-export const Friend: FC = () => {
+export const My: FC = () => {
   return <div>Friend</div>;
 };
-

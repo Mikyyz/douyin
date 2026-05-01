@@ -9,7 +9,7 @@
 body {
   padding: 0;
   margin: 0;
-  background-color: var(--semi-color-bg-1);
+  background-color: var(--semi-color-default);
 }
 
 .semi-navigation-item-selected {

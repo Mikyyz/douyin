@@ -1,0 +1,220 @@
+.loginModal {
+  :global(.semi-modal-content) {
+    border-radius: 24px;
+    border: 0;
+    box-shadow: none;
+    overflow: hidden;
+    pointer-events: auto;
+  }
+  :global(.semi-modal) {
+    &::before {
+      content: "";
+      position: relative;
+      top: 0;
+      left: 0;
+
+      width: 380px;
+      height: 240px;
+
+      background: radial-gradient(
+        circle,
+        rgba(52, 211, 153, 0.22) 0%,
+        rgba(110, 231, 183, 0.14) 40%,
+        rgba(167, 243, 208, 0.08) 60%,
+        rgba(167, 243, 208, 0) 75%
+      );
+
+
+      filter: blur(60px);
+
+      z-index: 1;
+      pointer-events: none;
+    }
+  }
+}
+
+.loginModalHideMask {
+  pointer-events: none !important;
+}
+
+.loginModalTitleWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 9;
+}
+
+.loginModalCloseIconWrapper {
+  cursor: pointer;
+  position: absolute;
+  right: -10px;
+  top: 10px;
+}
+
+.loginModalCloseIcon {
+  font-size: 16px;
+  color: var(--semi-color-text-3);
+  &:hover {
+    color: var(--semi-color-text-1);
+  }
+}
+
+.loginModalContent {
+  margin-top: 30px;
+}
+
+.loginModalLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 26px;
+}
+
+.loginModalQrCodeWrapper {
+  width: 178px;
+  height: 178px;
+  border: 1px solid var(--semi-color-border);
+  padding: 8px;
+  border-radius: 12px;
+}
+
+.loginModalQrCodeTitle {
+  font-size: 16px;
+}
+
+.loginModalInfo {
+  display: flex;
+  align-items: center;
+}
+
+.loginModalInfoIcon {
+  font-size: 16px;
+  padding-right: 8px;
+  padding-left: 8px;
+  color: var(--semi-color-text-2);
+}
+
+.loginModalInfoBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--semi-color-border);
+  border-radius: var(--semi-border-radius-full);
+  padding: 4px 12px;
+  color: var(--semi-color-text-2);
+  cursor: pointer;
+  &:hover {
+    background-color: var(--semi-color-fill-0);
+  }
+}
+
+.loginModalLRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginModalRightHeader {
+  display: flex;
+  justify-content: center;
+}
+
+.loginModalRightHeaderTitle {
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--semi-color-text-3);
+}
+
+.loginModalRightHeaderTitleActive {
+  color: var(--semi-color-text-1);
+}
+
+.loginModalForm {
+  margin-top: 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  :global(.semi-input-group) {
+    display: flex;
+    height: 50px;
+    width: 272px;
+  }
+  :global(.semi-select:focus) {
+    border: 0;
+  }
+  :global(.semi-input-wrapper) {
+    background-color: var(--semi-color-fill-0);
+    border: 0;
+    height: 100%;
+    flex: 1;
+  }
+  :global(.semi-input-number .semi-input-wrapper) {
+    width: 272px;
+    height: 50px;
+  }
+  :global(.semi-input-default) {
+    height: 100%;
+    flex: 1;
+  }
+  :global(.semi-input-wrapper-focus) {
+    border: 0;
+  }
+  :global(.semi-input-wrapper:hover) {
+    border: 0;
+  }
+}
+
+.loginModalPassword {
+  :global(.semi-input) {
+    width: 242px;
+    height: 50px;
+  }
+}
+
+.loginModalCodeBtn {
+  white-space: nowrap;
+  padding-right: 14px;
+  font-weight: normal;
+  &:global(.semi-button-borderless:not(.semi-button-disabled):hover) {
+    background-color: transparent;
+  }
+  &:global(.semi-typography.semi-typography-tertiary) {
+    color: var(--semi-color-text-3);
+  }
+  cursor: pointer;
+}
+
+.loginModalCodeBtnActive {
+  &:global(.semi-typography.semi-typography-tertiary) {
+    color: var(--semi-color-primary);
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.loginModalSubmitBtn {
+  margin-top: 56px;
+  width: 272px;
+  height: 50px;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.loginModalAgreement {
+  margin-top: 16px;
+}
+
+.loginModalAgreementLink {
+  &:global(.semi-typography a) {
+    color: var(--semi-color-text-2);
+    font-weight: normal;
+    &:hover {
+      color: var(--semi-color-text-1);
+    }
+  }
+}

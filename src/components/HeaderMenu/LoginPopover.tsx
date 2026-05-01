@@ -25,6 +25,7 @@ export const LoginPopover: FC<LoginPopoverProps> = ({
           ? content
           : renderLoginTip?.() ?? <LoginTip {...loginTipProps} />
       }
+      clickToHide
       {...rest}
     >
       {children}
