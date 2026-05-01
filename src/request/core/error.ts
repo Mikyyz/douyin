@@ -2,14 +2,13 @@ import { clearToken } from '../plugins/auth';
 import { TOKEN_EXPIRED } from '@/contants/code';
 import { useLoginModalStore } from '@/store/useLoginModalStore';
 import { LOGIN_MODAL_TITLE } from '@/contants';
-
-const openLoginModal = useLoginModalStore((state) => state.openLoginModal);
-
 export const handleBusinessError = (code: number, message: string) => {
   switch (code) {
     case TOKEN_EXPIRED:
       clearToken();
-      openLoginModal(LOGIN_MODAL_TITLE.login);
+      useLoginModalStore
+        .getState()
+        .openLoginModal(LOGIN_MODAL_TITLE.login);
       break;
 
     default:

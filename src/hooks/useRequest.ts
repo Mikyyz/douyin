@@ -9,6 +9,8 @@ export const useRequest = <T>(service: () => Promise<T>) => {
     try {
       setLoading(true);
       const res = await service();
+      console.log('res>>', res);
+      
       setData(res);
     } catch (error) {
       setError(error as Error);

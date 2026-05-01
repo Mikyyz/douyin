@@ -4,10 +4,9 @@ import {
 } from 'axios';
 
 export interface ApiResponse<T = any> {
-  code: number;
-  message: string;
+  status_code: number;
+  msg: string;
   data: T;
-  success: boolean;
 }
 
 export interface RequestConfig<D = any> extends InternalAxiosRequestConfig<D> {

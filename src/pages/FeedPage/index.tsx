@@ -4,12 +4,16 @@ import { IconChevronLeft, IconChevronRight } from "@douyinfe/semi-icons";
 import { FEED_PAGE_TABS } from "@/contants";
 import { PageTabsType } from "@/types";
 import { useTabsOverflow } from "@/hooks/useOverflow";
+import { useRequest } from "@/hooks/useRequest";
+import { getVideoList } from "@/api/video";
+import { FeedList } from "@/components/FeedList";
 
 const FeedPage: FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { isLeftOverflow, isRightOverflow, isTabsOverflow } =
     useTabsOverflow(containerRef);
-
+  const { data } = useRequest(getVideoList);
+  console.log('data>>', data);
   const renderArrow = (
     items: PageTabsType,
     pos: string,
@@ -50,7 +54,9 @@ const FeedPage: FC = () => {
             tab={<span style={{ fontSize: 16 }}>{tab.title}</span>}
             itemKey={tab.key}
             key={tab.key}
-          />
+          >
+            <FeedList />
+          </TabPane>
         ))}
       </Tabs>
     </div>

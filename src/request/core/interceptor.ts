@@ -20,8 +20,8 @@ instance.interceptors.request.use((config) => {
 instance.interceptors.response.use(
   (response) => {
     const res = response.data;
-    if (res.code !== SUCCESS_CODE) {
-      handleBusinessError(res.code, res.message);
+    if (res.status_code !== SUCCESS_CODE) {
+      handleBusinessError(res.status_code, res.msg);
 
       return Promise.reject(res);
     }
