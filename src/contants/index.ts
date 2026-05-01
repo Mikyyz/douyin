@@ -2,3 +2,4 @@
 export * from "./pageTabs";
 export * from "./theme";
 export * from "./loginModalTitle";
+export * from "./code";

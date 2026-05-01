@@ -15,6 +15,7 @@
     "@douyinfe/semi-ui": "^2.95.1",
     "@semi-bot/semi-theme-custom-dark": "^1.0.0",
     "@semi-bot/semi-theme-custom-light": "^1.0.1",
+    "axios": "^1.15.2",
     "classnames": "^2.5.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
