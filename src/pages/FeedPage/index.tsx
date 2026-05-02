@@ -13,15 +13,15 @@ const FeedPage: FC = () => {
   const { isLeftOverflow, isRightOverflow, isTabsOverflow } =
     useTabsOverflow(containerRef);
   const { data } = useRequest(getVideoList);
-  console.log('data>>', data);
+  console.log("data>>", data);
   const renderArrow = (
-    items: PageTabsType,
+    _items: PageTabsType,
     pos: string,
-    handleArrowClick: any
+    handleArrowClick: any,
   ) => {
     if (!isTabsOverflow) return null;
     return (
-      <div style={{ marginTop: 6, width: 20 , paddingLeft: 10 }}>
+      <div style={{ marginTop: 6, width: 20, paddingLeft: 10 }}>
         {pos === "start" ? (
           <Button
             icon={<IconChevronLeft />}

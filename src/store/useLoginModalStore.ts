@@ -14,7 +14,7 @@ interface LoginModalState {
 
 export const useLoginModalStore = create<LoginModalState>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       isLoginModalOpen: false,
       loginModalTitle: "登录",
       modalConfig: {

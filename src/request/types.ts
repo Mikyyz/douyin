@@ -1,15 +1,19 @@
-import {
-  AxiosRequestConfig,
-  InternalAxiosRequestConfig,
-} from 'axios';
+import { AxiosRequestConfig } from "axios";
 
 export interface ApiResponse<T = any> {
   status_code: number;
-  msg: string;
+  message: string;
   data: T;
 }
 
-export interface RequestConfig<D = any> extends InternalAxiosRequestConfig<D> {
+export interface LegacyApiResponse<T = any> {
+  status_code: number;
+  msg?: string;
+  message?: string;
+  data: T;
+}
+
+export interface RequestConfig<D = any> extends AxiosRequestConfig<D> {
   /**
    * 是否携带 token
    */
@@ -41,4 +45,4 @@ export interface RequestConfig<D = any> extends InternalAxiosRequestConfig<D> {
   retry?: number;
 }
 
-export type RequestPromise<T> = Promise<T>;
+export type RequestPromise<T> = Promise<ApiResponse<T>>;

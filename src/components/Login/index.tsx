@@ -28,7 +28,6 @@ export const LoginModal: FC = () => {
   const loginModalTitle = useLoginModalStore((s) => s.loginModalTitle);
   const modalConfig = useLoginModalStore((s) => s.modalConfig);
   const { showCloseIcon = true, ...rest } = modalConfig;
-  console.log('isLoginModalOpen>>', isLoginModalOpen);
   
   const [loginType, setLoginType] = useState<LoginType>("sms");
   // 是否为有效的手机号

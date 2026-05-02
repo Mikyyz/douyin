@@ -18,7 +18,7 @@ export default [
       parser: tsParser,
       ecmaVersion: 2022,
       sourceType: "module",
-      globals: globals.browser,
+      globals: { ...globals.browser, React: "readonly" },
       parserOptions: {
         ecmaFeatures: { jsx: true },
       },
@@ -65,9 +65,26 @@ export default [
     },
 
     settings: {
+      "import/parsers": {
+        "@typescript-eslint/parser": [".ts", ".tsx"],
+      },
+      "import/resolver": {
+        typescript: {
+          project: "./tsconfig.json",
+        },
+        node: {
+          extensions: [".js", ".jsx", ".ts", ".tsx"],
+        },
+      },
       react: {
         version: "detect",
       },
+    },
+  },
+  {
+    files: ["**/*.d.ts"],
+    rules: {
+      "@typescript-eslint/no-unused-vars": "off",
     },
   },
 ];

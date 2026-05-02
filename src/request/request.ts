@@ -1,12 +1,13 @@
 import "./core/interceptor";
+import "./plugins/defaultAuthExpiredHandler";
 
 import instance from "./core/axios";
 
-import { RequestConfig, RequestPromise } from "./types";
+import { ApiResponse, RequestConfig, RequestPromise } from "./types";
 
 class Request {
   get<T = any>(url: string, config?: RequestConfig): RequestPromise<T> {
-    return instance.get(url, config);
+    return instance.get<any, ApiResponse<T>>(url, config);
   }
 
   post<T = any>(
@@ -14,7 +15,7 @@ class Request {
     data?: any,
     config?: RequestConfig,
   ): RequestPromise<T> {
-    return instance.post(url, data, config);
+    return instance.post<any, ApiResponse<T>>(url, data, config);
   }
 
   put<T = any>(
@@ -22,11 +23,11 @@ class Request {
     data?: any,
     config?: RequestConfig,
   ): RequestPromise<T> {
-    return instance.put(url, data, config);
+    return instance.put<any, ApiResponse<T>>(url, data, config);
   }
 
   delete<T = any>(url: string, config?: RequestConfig): RequestPromise<T> {
-    return instance.delete(url, config);
+    return instance.delete<any, ApiResponse<T>>(url, config);
   }
 
   patch<T = any>(
@@ -34,7 +35,7 @@ class Request {
     data?: any,
     config?: RequestConfig,
   ): RequestPromise<T> {
-    return instance.patch(url, data, config);
+    return instance.patch<any, ApiResponse<T>>(url, data, config);
   }
 }
 
