@@ -1,2 +1,2 @@
-export const SUCCESS_CODE = 0;
-export const TOKEN_EXPIRED = 401;
+export const SUCCESS_CODE = 10000;
+export const TOKEN_EXPIRED = 10003;

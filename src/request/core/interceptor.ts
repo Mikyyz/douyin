@@ -13,6 +13,7 @@ import {
   createHttpError,
   createNetworkError,
 } from "./error";
+import { Toast } from "@douyinfe/semi-ui";
 
 // 请求拦截
 instance.interceptors.request.use((config) => {
@@ -34,14 +35,20 @@ instance.interceptors.response.use(
 
     const res: ApiResponse<any> = {
       status_code: code ? code : SUCCESS_CODE,
-      message: raw?.message,
+      msg: raw?.msg,
       data: raw?.data,
     };
 
     if (res?.status_code !== SUCCESS_CODE) {
+      const config = response.config;
+      console.log(response, res);
+      // 是否静默
+      if (!config?.silentError) {
+        Toast.error(res.msg || "系统错误");
+      }
       throw createBusinessError({
         code: res?.status_code,
-        message: res?.message ?? "业务请求失败",
+        message: res?.msg ?? "业务请求失败",
         response: res,
       });
     }

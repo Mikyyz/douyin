@@ -1,4 +1,5 @@
-import { FC, useEffect, useMemo, useState } from "react";
+import { FC, useEffect, useMemo, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Col,
   Divider,
@@ -15,19 +16,31 @@ import {
   IconIndependentCornersStroked,
 } from "@douyinfe/semi-icons";
 import classnames from "classnames";
+import { SUCCESS_CODE } from "@/contants/code";
 import { useLoginModalStore } from "@/store/useLoginModalStore";
-import styles from "./index.module.scss";
 import { useCountDown } from "@/hooks/useCountDown";
+import { useRequest } from "@/hooks/useRequest";
+import { login } from "@/api/user";
+import styles from "./index.module.scss";
+import { useLoginStore } from "@/store/useLoginStore";
 
 const { Text, Title } = Typography;
 
 type LoginType = "sms" | "password";
 
 export const LoginModal: FC = () => {
+  const navigate = useNavigate();
   const isLoginModalOpen = useLoginModalStore((s) => s.isLoginModalOpen);
   const loginModalTitle = useLoginModalStore((s) => s.loginModalTitle);
   const modalConfig = useLoginModalStore((s) => s.modalConfig);
+  const closeLoginModal = useLoginModalStore((s) => s.closeLoginModal);
   const { showCloseIcon = true, ...rest } = modalConfig;
+
+  const setLogin = useLoginStore((s) => s.setLogin);
+
+  const formApiRef = useRef<any>(null);
+
+  const { run } = useRequest(login, { manual: true });
   
   const [loginType, setLoginType] = useState<LoginType>("sms");
   // 是否为有效的手机号
@@ -62,13 +75,29 @@ export const LoginModal: FC = () => {
     return validators[loginType];
   }, [loginType, isValidPhone, isValidCode, isPasswordEmpty]);
 
-  const handleClose = () => {
-    useLoginModalStore.getState().closeLoginModal();
-  };
+  const handleClose = () => closeLoginModal();
   const handleGetCode = () => {
     if (!isCounting) {
       startCountDown();
     }
+  };
+  // 执行登录
+  const handleLogin = async () => {
+    try {
+      const values = await formApiRef.current.validate();
+      const res = await run({
+        phone: values.number,
+        password: values.password,
+      });
+      if (res?.status_code === SUCCESS_CODE) {
+        setLogin(res?.data?.token, true);
+        handleClose();
+        navigate(0);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+    // useLoginModalStore.getState().closeLoginModal();
   };
   const formatterCode = (value: string | number): string => {
     // 限制在6位
@@ -180,6 +209,7 @@ export const LoginModal: FC = () => {
               number: null,
               code: "",
             }}
+            getFormApi={(formApi: any) => formApiRef.current = formApi} 
             onValueChange={onValueChange}
           >
             <Form.InputGroup>
@@ -220,11 +250,11 @@ export const LoginModal: FC = () => {
               />
             )}
             <Button
-              htmlType="submit"
               size="large"
               theme="solid"
               className={styles.loginModalSubmitBtn}
               disabled={!isValid}
+              onClick={handleLogin}
             >
               登录
             </Button>

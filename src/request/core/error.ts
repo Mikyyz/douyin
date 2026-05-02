@@ -42,7 +42,7 @@ export const createHttpError = (params: {
   message: string;
   originalError?: unknown;
 }) => {
-  if (params.status === 401) {
+  if (params.status === TOKEN_EXPIRED) {
     triggerAuthExpired({
       reason: "http",
       httpStatus: params.status,

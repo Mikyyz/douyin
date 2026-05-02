@@ -8,5 +8,6 @@ declare module "axios" {
     cache?: boolean;
     dedupe?: boolean;
     retry?: number;
+    silentError?: boolean;
   }
 }
