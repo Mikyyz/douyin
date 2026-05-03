@@ -8,14 +8,14 @@ import { useRequest } from "@/hooks/useRequest";
 import { getVideoList } from "@/api/video";
 import { FeedList } from "@/components/FeedList";
 import { VideoItem } from "@/types";
+import { DouyinLoader } from "@/components/DouyinLoader";
 import styles from "./index.module.scss";
 
 const FeedPage: FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { isLeftOverflow, isRightOverflow, isTabsOverflow } =
     useTabsOverflow(containerRef);
-  const { data } = useRequest(getVideoList);
-  console.log("data>>", data);
+  const { data, loading } = useRequest(getVideoList);
   const renderArrow = (
     _items: PageTabsType,
     pos: string,
@@ -49,7 +49,7 @@ const FeedPage: FC = () => {
         defaultActiveKey="all"
         collapsible
         arrowPosition={"end"}
-        renderArrow={renderArrow}
+        renderArrow={renderArrow as any}
       >
         {FEED_PAGE_TABS.map((tab: PageTabsType) => (
           <TabPane
@@ -58,7 +58,11 @@ const FeedPage: FC = () => {
             key={tab.key}
             className={styles.tabPaneContainer}
           >
-            <FeedList list={data?.data as unknown as VideoItem[]} />
+            {loading ? (
+              <DouyinLoader size={44} fullscreen />
+            ) : (
+              <FeedList list={(data?.data as unknown as VideoItem[]) || []} />
+            )}
           </TabPane>
         ))}
       </Tabs>
