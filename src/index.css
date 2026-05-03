@@ -7,6 +7,8 @@
   --jx-card-row-gap: 24px;
   --jx-card-column-gap: 16px;
   --page-header-height: 56px;
+  /* 标题 + footer 高度 */
+  --jx-info-height: 90px;
 }
 
 body {

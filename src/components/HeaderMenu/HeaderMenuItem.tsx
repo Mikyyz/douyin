@@ -12,7 +12,7 @@ export const HeaderMenuItem: FC<HeaderMenuItemProps> = ({ icon, text }) => {
   return (
     <div className={styles.headerMenuItem}>
       <Space vertical spacing={1}>
-        {icon}
+        <span className={styles.headerMenuItemIcon}>{icon}</span>
         <Text type="secondary">{text}</Text>
       </Space>
     </div>
