@@ -1,10 +1,10 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { VideoItem } from "@/types";
-import { Image, Space, Typography } from "@douyinfe/semi-ui";
+import { Dropdown, Image, Space, Typography } from "@douyinfe/semi-ui";
 import { formatTime } from "@/utils";
 import { DEFAULT_DATE_FORMAT } from "@/contants";
 import styles from "./index.module.scss";
-import { IconHeartStroked } from "@douyinfe/semi-icons";
+import { IconHeartStroked, IconMore } from "@douyinfe/semi-icons";
 
 const { Paragraph, Text } = Typography;
 
@@ -14,8 +14,20 @@ interface VideoCardProps {
 export const VideoCard: FC<VideoCardProps> = ({ video = {} as VideoItem }) => {
   const { caption, desc, cover, author, likes, time, create_time } = video;
   const { username } = author;
+  // 记录鼠标移入和移出
+  const [isHover, setIsHover] = useState(false);
+  const handleMouseEnter = () => {
+    setIsHover(true);
+  };
+  const handleMouseLeave = () => {
+    setIsHover(false);
+  };
   return (
-    <div className={styles.videoCardWrapper}>
+    <div
+      className={styles.videoCardWrapper}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className={styles.videoCard}>
         <div className={styles.videoCardCoverWrapper}>
           <Image
@@ -44,10 +56,28 @@ export const VideoCard: FC<VideoCardProps> = ({ video = {} as VideoItem }) => {
           <div className={styles.videoCardFooter}>
             <Space>
               <Text type="tertiary">{`@${username}`}</Text>
+              <Text type="tertiary">·</Text>
               <Text type="tertiary">
                 {formatTime(create_time as number, DEFAULT_DATE_FORMAT)}
               </Text>
             </Space>
+            {isHover && (
+              <Dropdown
+                trigger="click"
+                position="bottomLeft"
+                render={
+                  <Dropdown.Menu style={{ padding: 12 }} >
+                    <Dropdown.Item>不感兴趣</Dropdown.Item>
+                    <Dropdown.Item>举报</Dropdown.Item>
+                  </Dropdown.Menu>
+                }
+                clickToHide
+              >
+                <Text className={styles.videoCardMore}>
+                  <IconMore />
+                </Text>
+              </Dropdown>
+            )}
           </div>
         </div>
       </div>

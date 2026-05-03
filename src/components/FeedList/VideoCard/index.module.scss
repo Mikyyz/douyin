@@ -77,6 +77,22 @@
   font-size: 12px;
   line-height: 16px;
   color: var(--semi-color-text-2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.videoCardMore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.videoCardMore {
+  color: var(--semi-color-text-2);
+  &:hover {
+    color: var(--semi-color-text-0);
+  }
 }
 
 @media (min-width: 1496px) {
