@@ -179,13 +179,13 @@
   white-space: nowrap;
   padding-right: 14px;
   font-weight: normal;
+  cursor: pointer;
   &:global(.semi-button-borderless:not(.semi-button-disabled):hover) {
     background-color: transparent;
   }
   &:global(.semi-typography.semi-typography-tertiary) {
     color: var(--semi-color-text-3);
   }
-  cursor: pointer;
 }
 
 .loginModalCodeBtnActive {

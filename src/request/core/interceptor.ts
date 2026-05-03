@@ -3,9 +3,6 @@ import instance from "./axios";
 import { SUCCESS_CODE } from "@/contants/code";
 
 import { AxiosHeaders, isAxiosError } from "axios";
-
-import { getToken } from "../plugins/auth";
-
 import type { ApiResponse } from "../types";
 import {
   createBusinessError,
@@ -14,10 +11,12 @@ import {
   createNetworkError,
 } from "./error";
 import { Toast } from "@douyinfe/semi-ui";
+import { useLoginStore } from "@/store/useLoginStore";
 
 // 请求拦截
 instance.interceptors.request.use((config) => {
-  const token = getToken();
+  const token = useLoginStore.getState().token;
+  console.log('token>>', token);
   if (config.withToken !== false && token) {
     const value = `Bearer ${token}`;
     const headers = AxiosHeaders.from(config.headers ?? {});

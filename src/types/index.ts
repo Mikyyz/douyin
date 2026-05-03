@@ -1,5 +1,6 @@
 
 import { ReactNode } from 'react';
+export * from './video';
 export interface PageTabsType {
   key: string;
   title: string;

@@ -1,15 +1,28 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: PingFang SC,DFPKingGothicGB-Regular,sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --jx-card-row-gap: 24px;
+  --jx-card-column-gap: 16px;
+  --page-header-height: 56px;
 }
 
 body {
   padding: 0;
   margin: 0;
   background-color: var(--semi-color-default);
+  overflow-y: overlay;
+}
+
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome Safari Edge */
 }
 
 .semi-navigation-item-selected {

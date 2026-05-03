@@ -69,3 +69,20 @@
 .userLoginMenuFooterIcon {
   color: var(--semi-color-text-3)
 }
+
+.userLogoutBtnWrapper {
+  padding: 14px 0 0 12px;
+  border-top: 1px solid var(--semi-color-border);
+}
+.userLogoutBtn {
+  display: flex;
+  width: 90px;
+  align-items: center;
+  font-weight: normal;
+  gap: 8px;
+  color: var(--semi-color-text-2);
+  cursor: pointer;
+  &:hover {
+    color: var(--semi-color-text-1);
+  }
+}

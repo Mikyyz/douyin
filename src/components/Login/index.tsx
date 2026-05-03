@@ -1,5 +1,4 @@
 import { FC, useEffect, useMemo, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import {
   Col,
   Divider,
@@ -23,13 +22,13 @@ import { useRequest } from "@/hooks/useRequest";
 import { login } from "@/api/user";
 import styles from "./index.module.scss";
 import { useLoginStore } from "@/store/useLoginStore";
+import { useAppStore } from "@/store/useAppStore";
 
 const { Text, Title } = Typography;
 
 type LoginType = "sms" | "password";
 
 export const LoginModal: FC = () => {
-  const navigate = useNavigate();
   const isLoginModalOpen = useLoginModalStore((s) => s.isLoginModalOpen);
   const loginModalTitle = useLoginModalStore((s) => s.loginModalTitle);
   const modalConfig = useLoginModalStore((s) => s.modalConfig);
@@ -37,6 +36,7 @@ export const LoginModal: FC = () => {
   const { showCloseIcon = true, ...rest } = modalConfig;
 
   const setLogin = useLoginStore((s) => s.setLogin);
+  const initApp = useAppStore((s) => s.initApp);
 
   const formApiRef = useRef<any>(null);
 
@@ -92,7 +92,8 @@ export const LoginModal: FC = () => {
       if (res?.status_code === SUCCESS_CODE) {
         setLogin(res?.data?.token, true);
         handleClose();
-        navigate(0);
+        // 初始化
+        initApp();
       }
     } catch (error) {
       console.error(error);

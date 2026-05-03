@@ -4,10 +4,15 @@ import "./plugins/defaultAuthExpiredHandler";
 import instance from "./core/axios";
 
 import { ApiResponse, RequestConfig, RequestPromise } from "./types";
+import { replacePathParams } from "@/utils";
 
 class Request {
-  get<T = any>(url: string, config?: RequestConfig): RequestPromise<T> {
-    return instance.get<any, ApiResponse<T>>(url, config);
+  get<T = any>(url: string, config?: RequestConfig & { pathParams?: Record<string, any> }): RequestPromise<T> {
+    const finalUrl = replacePathParams(url, config?.params);
+    return instance.get<any, ApiResponse<T>>(finalUrl, {
+      ...config,
+      params: config?.params,
+    });
   }
 
   post<T = any>(

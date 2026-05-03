@@ -7,6 +7,8 @@ import { useTabsOverflow } from "@/hooks/useOverflow";
 import { useRequest } from "@/hooks/useRequest";
 import { getVideoList } from "@/api/video";
 import { FeedList } from "@/components/FeedList";
+import { VideoItem } from "@/types";
+import styles from "./index.module.scss";
 
 const FeedPage: FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -21,7 +23,7 @@ const FeedPage: FC = () => {
   ) => {
     if (!isTabsOverflow) return null;
     return (
-      <div style={{ marginTop: 6, width: 20, paddingLeft: 10 }}>
+      <div className={styles.tabRightArrowWrapper}>
         {pos === "start" ? (
           <Button
             icon={<IconChevronLeft />}
@@ -41,7 +43,7 @@ const FeedPage: FC = () => {
     );
   };
   return (
-    <div ref={containerRef}>
+    <div ref={containerRef} className={styles.feedPageContainer}>
       <Tabs
         type="line"
         defaultActiveKey="all"
@@ -54,8 +56,9 @@ const FeedPage: FC = () => {
             tab={<span style={{ fontSize: 16 }}>{tab.title}</span>}
             itemKey={tab.key}
             key={tab.key}
+            className={styles.tabPaneContainer}
           >
-            <FeedList />
+            <FeedList list={data?.data as unknown as VideoItem[]} />
           </TabPane>
         ))}
       </Tabs>

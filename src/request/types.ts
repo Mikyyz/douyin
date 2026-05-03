@@ -43,6 +43,10 @@ export interface RequestConfig<D = any> extends AxiosRequestConfig<D> {
    * 重试次数
    */
   retry?: number;
+  // 是否静默错误
+  silentError?: boolean;
+  // 支持其他扩展
+  [key: string]: any;
 }
 
 export type RequestPromise<T> = Promise<ApiResponse<T>>;
