@@ -29,6 +29,10 @@ export interface VideoItem {
   id: string;
 
   /**
+   * 视频地址
+   */
+  video_url: string;
+  /**
    * 视频标题
    */
   caption: string;
@@ -88,4 +92,12 @@ export interface VideoItem {
    * 视频权限
    */
   aweme_control: VideoAwemeControl;
+}
+
+// 视频是否处于视口、悬浮、初始化
+export type ActiveSource = 'hover' | 'inview' | 'init' | null
+
+export interface VideoPlayerRef {
+  play: () => void;
+  pause: () => void;
 }
