@@ -23,6 +23,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.14.2",
     "vite-plugin-semi-theme": "^0.6.0",
+    "xgplayer": "^3.0.24",
     "zustand": "^5.0.12"
   },
   "devDependencies": {
