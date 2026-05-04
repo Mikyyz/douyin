@@ -9,6 +9,7 @@ import SideBarFooter from "@/components/SideBarFooter";
 import { useLoginModalStore } from "@/store/useLoginModalStore";
 import { LOGIN_MODAL_TITLE } from "@/contants";
 import styles from "./index.module.scss";
+import { useLoginStore } from "@/store/useLoginStore";
 
 const { Header, Footer } = Nav;
 
@@ -16,11 +17,12 @@ const PageSider: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { openLoginModal, setModalConfig, closeLoginModal } = useLoginModalStore();
+  const isLogin = useLoginStore((s) => s.isLogin);  
 
   const handleSelectNavItem = ({ itemKey }: { itemKey: string}) => {
     navigate(`/${itemKey}`);
     closeLoginModal();
-    if (itemKey in LOGIN_MODAL_TITLE) {
+    if (itemKey in LOGIN_MODAL_TITLE && !isLogin) {
       openLoginModal(LOGIN_MODAL_TITLE[itemKey as keyof typeof LOGIN_MODAL_TITLE] );
       setModalConfig({ mask: false, showCloseIcon: false });
     }
@@ -30,7 +32,7 @@ const PageSider: FC = () => {
       className={styles.pageNav}
       selectedKeys={[location.pathname?.slice(1) || "/"]}
       defaultSelectedKeys={["/"]}
-      onSelect={handleSelectNavItem}
+      onSelect={handleSelectNavItem as any}
     >
       <Header style={{ color: "var(--semi-color-text-0)" }}>
         <IconTiktokLogo style={{ height: "36px", fontSize: 36 }} />

@@ -15,7 +15,7 @@ const MainLayout: FC = () => {
         <Sider className={style.siderContainer}><PageSider /></Sider>
         <Layout className={style.contentContainer}>
           <Header className={style.headerContainer}><PageHeader /></Header>
-          <Content className={style.contentContainer}>
+          <Content className={style.mainContentContainer}>
             <Outlet /> {/* 子页面渲染在这里 */}
           </Content>
         </Layout>

@@ -26,6 +26,6 @@
   z-index: 99;
   background-color: var(--semi-color-default);
 }
-.contentContainer {
-  padding: 0 10px;
+.mainContentContainer {
+  padding: var(--page-header-height) 10px;
 }
